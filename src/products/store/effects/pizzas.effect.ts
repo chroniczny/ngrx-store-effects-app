@@ -7,7 +7,7 @@ import { of } from 'rxjs/observable/of';
 import { map, switchMap, catchError } from 'rxjs/operators';
 
 import * as pizzaActions from '../actions/pizzas.action';
-import * as fromServices from '../../services';
+import * as fromServices from '../../services'; // to use pizza service (http to grt pizzas list obs.)
 
 @Injectable()
 export class PizzasEffects {
@@ -17,7 +17,7 @@ export class PizzasEffects {
   ) {}
 
   @Effect() // decorator ... we can also ({dispatch: false}) and nothing will be dispatch (no actions!)
-  // loadPizzas$ is an Observable with generic type of ACTION  -> we need to return an action!
+  // loadPizzas$ is an Observable with generic type of ACTION  -> so we need to return an action!
   loadPizzas$ = this.actions$.ofType(pizzaActions.LOAD_PIZZAS).pipe(
     switchMap(() => { // switch to new observable stream
       return this.pizzaService

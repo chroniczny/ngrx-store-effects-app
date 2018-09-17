@@ -42,7 +42,7 @@ export class ProductsComponent implements OnInit {
     // });
 
     // instead of top...
-    this.pizzas$ = this.store.select(fromStore.getAllPizzas);
+    this.pizzas$ = this.store.select(fromStore.getAllPizzas); // observable array
     this.store.dispatch(new fromStore.LoadPizzas());
   }
 }
